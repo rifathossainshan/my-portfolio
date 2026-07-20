@@ -47,7 +47,7 @@ export default function Projects() {
               <p className="text-textMuted flex-grow mb-6">{p.description}</p>
 
               <div className="flex flex-wrap gap-2 mt-auto">
-                {p.tech.map((t) => (
+                {p.stack.map((t) => (
                   <span key={t} className="text-xs font-mono px-2 py-1 bg-accentCyan/10 text-accentCyan rounded-md border border-accentCyan/20">
                     {t}
                   </span>
