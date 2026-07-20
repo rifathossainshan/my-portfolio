@@ -4,40 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        mat: {
-          DEFAULT: '#1E2E28',
-          dark: '#131F1A',
-          light: '#2C4038',
-        },
-        paper: '#FAF8F2',
-        ink: '#14171A',
-        grid: {
-          DEFAULT: '#E3B94E',
-          soft: '#F0D48A',
-        },
-        blade: {
-          DEFAULT: '#E15B45',
-          soft: '#F0846F',
-        },
+        bgDark: '#0a0f1c',      // Deep slate/blue background
+        bgCard: 'rgba(17, 24, 39, 0.7)', // Translucent card background
+        textMain: '#f8fafc',
+        textMuted: '#94a3b8',
+        accentCyan: '#00f2fe',
+        accentPurple: '#4facfe',
+        accentPink: '#f02fc2',
       },
       boxShadow: {
-        soft: '0 2px 12px -2px rgba(20, 23, 26, 0.08)',
-        card: '0 4px 24px -6px rgba(20, 23, 26, 0.12)',
-        lift: '0 12px 40px -8px rgba(20, 23, 26, 0.22)',
-        glow: '0 0 0 1px rgba(227, 185, 78, 0.15), 0 8px 30px -6px rgba(227, 185, 78, 0.25)',
+        glass: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        neonCyan: '0 0 15px rgba(0, 242, 254, 0.5)',
+        neonPurple: '0 0 15px rgba(79, 172, 254, 0.5)',
+        neonPink: '0 0 15px rgba(240, 47, 194, 0.5)',
       },
       backgroundImage: {
-        'grid-lines':
-          'linear-gradient(rgba(227,185,78,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(227,185,78,0.10) 1px, transparent 1px)',
-        'mat-gradient': 'radial-gradient(120% 120% at 15% 0%, #2C4038 0%, #1E2E28 45%, #131F1A 100%)',
-        'card-gradient': 'linear-gradient(155deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 60%)',
+        'gradient-radial': 'radial-gradient(circle at top, #111827 0%, #0a0f1c 100%)',
+        'gradient-cyan-purple': 'linear-gradient(to right, #00f2fe, #4facfe)',
+        'gradient-purple-pink': 'linear-gradient(to right, #4facfe, #f02fc2)',
       },
       fontFamily: {
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
         sans: ['"Inter"', 'ui-sans-serif', 'sans-serif'],
-      },
-      backgroundSize: {
-        grid: '24px 24px',
       },
     },
   },

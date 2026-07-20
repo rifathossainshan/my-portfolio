@@ -1,74 +1,66 @@
 import { motion } from "framer-motion";
-import { profile } from "../data/profile";
-import RulerStrip from "./RulerStrip";
+import { ArrowRight, Download } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative bg-mat-gradient text-paper overflow-hidden">
-      <div className="absolute inset-0 bg-grid-lines bg-grid opacity-30 pointer-events-none" />
-      <div className="absolute inset-0 grain pointer-events-none" />
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden px-6">
+      {/* Animated background blobs */}
+      <div className="blob-c w-96 h-96 bg-accentCyan/30 top-1/4 -left-20"></div>
+      <div className="blob-c w-96 h-96 bg-accentPurple/30 bottom-1/4 -right-20" style={{ animationDelay: '2s' }}></div>
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-20">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
+      <div className="max-w-4xl w-full mx-auto relative z-10 flex flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="font-mono text-xs uppercase tracking-[0.3em] text-grid mb-6"
+          transition={{ duration: 0.6 }}
         >
-          {profile.location} — Available for hire
-        </motion.p>
-
+          <span className="inline-block py-1 px-3 rounded-full border border-accentCyan/30 bg-accentCyan/10 text-accentCyan text-sm font-mono mb-6">
+            Welcome to my creative space
+          </span>
+        </motion.div>
+        
         <motion.h1
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-sans font-black leading-[0.95] tracking-tight text-[13vw] md:text-[6.5rem] bg-gradient-to-br from-paper via-paper to-grid-soft bg-clip-text text-transparent"
+          className="font-sans font-extrabold text-5xl md:text-7xl tracking-tight mb-6 leading-tight"
         >
-          {profile.name}
+          Hi, I'm <span className="text-gradient">Rifat Hossain</span><br />
+          <span className="text-4xl md:text-6xl text-textMuted">Designer & Developer.</span>
         </motion.h1>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mt-4"
+          className="max-w-2xl text-lg md:text-xl text-textMuted mb-10"
         >
-          <span className="font-mono text-xl md:text-2xl text-grid">Graphic Designer</span>
-          <span className="font-mono text-xl md:text-2xl text-paper/40">×</span>
-          <span className="font-mono text-xl md:text-2xl text-blade">Software Engineer</span>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          Blending aesthetic graphic design with robust computer science engineering to build digital experiences that are visually stunning and technically sound.
+        </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 max-w-xl text-paper/70 leading-relaxed"
-        >
-          {profile.tagline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-wrap gap-4 mt-10"
+          className="flex flex-wrap gap-4 justify-center"
         >
           <a
             href="#work"
-            className="px-7 py-3.5 rounded-full bg-grid text-mat font-mono text-sm uppercase tracking-widest font-semibold shadow-glow hover:bg-grid-soft hover:-translate-y-0.5 transition-all"
+            className="group flex items-center gap-2 bg-gradient-cyan-purple text-white px-8 py-4 rounded-full font-semibold hover:shadow-neonCyan transition-all duration-300"
           >
-            View Design Work
+            Explore My Work
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
+          
           <a
-            href="#projects"
-            className="px-7 py-3.5 rounded-full border border-paper/25 font-mono text-sm uppercase tracking-widest hover:border-blade hover:text-blade-soft hover:-translate-y-0.5 transition-all"
+            href="#resume"
+            className="group flex items-center gap-2 bg-white/5 border border-white/20 text-textMain px-8 py-4 rounded-full font-semibold hover:bg-white/10 hover:border-accentCyan/50 hover:shadow-neonPurple transition-all duration-300"
           >
-            View Code Projects
+            Download CV
+            <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
           </a>
         </motion.div>
       </div>
-
-      <RulerStrip dark />
     </section>
   );
 }

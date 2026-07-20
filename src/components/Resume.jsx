@@ -1,53 +1,40 @@
 import { motion } from "framer-motion";
-import { FileDown } from "lucide-react";
-import { profile } from "../data/profile";
+import { Download, FileText } from "lucide-react";
 
 export default function Resume() {
   return (
-    <section className="bg-mat-gradient text-paper">
-      <div className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
+    <section id="resume" className="py-24 relative">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
+          className="glass-card p-12 relative overflow-hidden group"
         >
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-grid">
-            05 — Resume
-          </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl mt-3 mb-5">
-            The one-page version
+          {/* Neon Glow Decoration */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-cyan-purple shadow-neonCyan"></div>
+          
+          <div className="w-16 h-16 mx-auto bg-white/5 rounded-2xl flex items-center justify-center text-accentCyan mb-6 border border-white/10 group-hover:scale-110 transition-transform duration-500 shadow-glass">
+            <FileText size={32} />
+          </div>
+          
+          <h2 className="font-sans font-bold text-3xl md:text-4xl mb-4 text-white">
+            Want to see the full details?
           </h2>
-          <p className="text-paper/70 leading-relaxed mb-8 max-w-md">
-            For the condensed version of everything on this page — education, experience, and
-            a summary of skills — grab a copy of my CV.
+          <p className="text-textMuted max-w-lg mx-auto mb-8">
+            Download my complete resume to learn more about my education, work experience, and technical skills in detail.
           </p>
+          
           <a
-            href={profile.cvPath}
-            download
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-grid text-mat font-mono text-sm uppercase tracking-widest font-semibold shadow-glow hover:bg-grid-soft hover:-translate-y-0.5 transition-all"
+            href="/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-cyan-purple text-white px-8 py-4 rounded-full font-bold hover:shadow-neonPurple transition-all duration-300"
           >
-            <FileDown size={16} /> Download CV
+            <Download size={20} />
+            Download Resume (PDF)
           </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="aspect-[3/4] rounded-2xl border border-paper/10 bg-mat-dark overflow-hidden shadow-lift"
-        >
-          <object
-            data={profile.cvPath}
-            type="application/pdf"
-            className="w-full h-full"
-            aria-label="CV preview"
-          >
-            <div className="w-full h-full flex items-center justify-center font-mono text-xs text-paper/40 p-6 text-center">
-              Add your cv.pdf to the /public folder to preview it here.
-            </div>
-          </object>
         </motion.div>
       </div>
     </section>

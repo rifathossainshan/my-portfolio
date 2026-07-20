@@ -5,21 +5,19 @@ import Projects from "./components/Projects";
 import Achievements from "./components/Achievements";
 import About from "./components/About";
 import Resume from "./components/Resume";
-import FreelanceSocial from "./components/FreelanceSocial";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans relative">
       <Navbar />
       <Hero />
+      <About />
       <DesignGallery />
       <Projects />
       <Achievements />
-      <About />
       <Resume />
-      <FreelanceSocial />
       <Contact />
       <Footer />
     </div>

@@ -1,60 +1,86 @@
-import { useEffect, useState } from "react";
-import { motion, useScroll } from "framer-motion";
-import { profile } from "../data/profile";
-
-const LINKS = [
-  { href: "#work", label: "Design" },
-  { href: "#projects", label: "Projects" },
-  { href: "#achievements", label: "Achievements" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
-];
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const { scrollYProgress } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: "About", href: "#about" },
+    { name: "Work", href: "#work" },
+    { name: "Projects", href: "#projects" },
+    { name: "Resume", href: "#resume" },
+  ];
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-paper/80 backdrop-blur-md shadow-soft border-b border-ink/5" : ""
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-bgDark/80 backdrop-blur-lg border-b border-white/10 shadow-glass" : "bg-transparent py-4"
       }`}
     >
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#top" className="font-mono font-bold text-sm tracking-tight">
-          {profile.name.split(" ").map((n) => n[0]).join("")}
-          <span className="text-blade">.</span>
+      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#home" className="text-2xl font-bold font-serif text-white hover:text-accentCyan transition-colors">
+          Rifat<span className="text-accentCyan">.</span>
         </a>
-        <ul className="hidden md:flex items-center gap-8">
-          {LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-xs font-mono uppercase tracking-widest text-ink/70 hover:text-blade transition-colors"
-              >
-                {l.label}
-              </a>
-            </li>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-textMuted hover:text-accentCyan transition-colors"
+            >
+              {link.name}
+            </a>
           ))}
-        </ul>
-        <a
-          href={profile.cvPath}
-          download
-          className="text-xs font-mono uppercase tracking-widest border border-ink/20 rounded-full px-4 py-2 hover:bg-ink hover:text-paper hover:border-ink hover:shadow-card transition-all"
+          <a
+            href="#contact"
+            className="px-5 py-2 rounded-full border border-accentCyan text-accentCyan hover:bg-accentCyan hover:text-bgDark transition-all duration-300 shadow-neonCyan"
+          >
+            Say Hello
+          </a>
+        </div>
+
+        {/* Mobile Nav Toggle */}
+        <button
+          className="md:hidden text-textMain focus:outline-none"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          CV ↓
-        </a>
-      </nav>
-      <motion.div
-        style={{ scaleX: scrollYProgress }}
-        className="h-[2px] bg-blade origin-left"
-      />
-    </header>
+          {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-bgDark/95 backdrop-blur-lg border-b border-white/10 shadow-glass py-6 px-6 flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-lg font-medium text-textMain hover:text-accentCyan"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="mt-4 px-5 py-3 rounded-lg bg-accentCyan text-bgDark text-center font-bold"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Say Hello
+          </a>
+        </div>
+      )}
+    </nav>
   );
 }
