@@ -1,65 +1,74 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { profile } from "../data/profile";
+import RulerStrip from "./RulerStrip";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-blue/10 dark:bg-accent-blue/20 blur-[100px] rounded-full -z-10 animate-pulse"></div>
-      
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+    <section id="top" className="relative bg-mat-gradient text-paper overflow-hidden">
+      <div className="absolute inset-0 bg-grid-lines bg-grid opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 grain pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-20">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-accent-blue font-medium mb-4 text-lg"
+          className="font-mono text-xs uppercase tracking-[0.3em] text-grid mb-6"
         >
-          Hi, I'm
+          {profile.location} — Available for hire
         </motion.p>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
+
+        <motion.h1
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-bold font-serif mb-6"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="font-sans font-black leading-[0.95] tracking-tight text-[13vw] md:text-[6.5rem] bg-gradient-to-br from-paper via-paper to-grid-soft bg-clip-text text-transparent"
         >
-          Rifat Hossain
+          {profile.name}
         </motion.h1>
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl md:text-4xl font-semibold text-gray-600 dark:text-gray-300 mb-8"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mt-4"
         >
-          Graphic Designer <span className="text-accent-coral">&</span> Software Engineer
-        </motion.h2>
-        
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
+          <span className="font-mono text-xl md:text-2xl text-grid">Graphic Designer</span>
+          <span className="font-mono text-xl md:text-2xl text-paper/40">×</span>
+          <span className="font-mono text-xl md:text-2xl text-blade">Software Engineer</span>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-2xl mx-auto text-gray-500 dark:text-gray-400 mb-10 text-lg"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 max-w-xl text-paper/70 leading-relaxed"
         >
-          Blending creative aesthetics with technical engineering. I design beautiful interfaces and build robust systems to bring ideas to life.
+          {profile.tagline}
         </motion.p>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-wrap gap-4 mt-10"
         >
-          <a href="#projects" className="px-8 py-3 rounded-full bg-accent-blue text-white font-medium hover:bg-blue-600 transition shadow-lg shadow-accent-blue/30 w-full sm:w-auto">
-            View My Work
+          <a
+            href="#work"
+            className="px-7 py-3.5 rounded-full bg-grid text-mat font-mono text-sm uppercase tracking-widest font-semibold shadow-glow hover:bg-grid-soft hover:-translate-y-0.5 transition-all"
+          >
+            View Design Work
           </a>
-          <a href="#" className="px-8 py-3 rounded-full border-2 border-accent-blue text-accent-blue dark:text-white font-medium hover:bg-accent-blue hover:text-white transition w-full sm:w-auto">
-            Download CV
+          <a
+            href="#projects"
+            className="px-7 py-3.5 rounded-full border border-paper/25 font-mono text-sm uppercase tracking-widest hover:border-blade hover:text-blade-soft hover:-translate-y-0.5 transition-all"
+          >
+            View Code Projects
           </a>
         </motion.div>
       </div>
+
+      <RulerStrip dark />
     </section>
   );
-};
-
-export default Hero;
+}

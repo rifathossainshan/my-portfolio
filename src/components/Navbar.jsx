@@ -1,32 +1,60 @@
-import React from 'react';
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { useEffect, useState } from "react";
+import { motion, useScroll } from "framer-motion";
+import { profile } from "../data/profile";
 
-const Navbar = ({ isDark, toggleTheme }) => {
+const LINKS = [
+  { href: "#work", label: "Design" },
+  { href: "#projects", label: "Projects" },
+  { href: "#achievements", label: "Achievements" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const { scrollYProgress } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="fixed w-full z-50 top-0 transition-colors duration-300 glass py-4">
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="text-2xl font-bold font-serif tracking-wide">
-          Rifat<span className="text-accent-blue">.</span>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-paper/80 backdrop-blur-md shadow-soft border-b border-ink/5" : ""
+      }`}
+    >
+      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        <a href="#top" className="font-mono font-bold text-sm tracking-tight">
+          {profile.name.split(" ").map((n) => n[0]).join("")}
+          <span className="text-blade">.</span>
         </a>
-        <div className="flex items-center gap-6">
-          <ul className="hidden md:flex gap-6 font-medium">
-            <li><a href="#about" className="hover:text-accent-blue transition">About</a></li>
-            <li><a href="#skills" className="hover:text-accent-blue transition">Skills</a></li>
-            <li><a href="#designs" className="hover:text-accent-blue transition">Design</a></li>
-            <li><a href="#projects" className="hover:text-accent-blue transition">Projects</a></li>
-            <li><a href="#contact" className="hover:text-accent-blue transition">Contact</a></li>
-          </ul>
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full glass hover:bg-white/20 transition"
-            aria-label="Toggle Theme"
-          >
-            {isDark ? <FiSun size={20} className="text-yellow-400" /> : <FiMoon size={20} className="text-slate-800" />}
-          </button>
-        </div>
-      </div>
-    </nav>
+        <ul className="hidden md:flex items-center gap-8">
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="text-xs font-mono uppercase tracking-widest text-ink/70 hover:text-blade transition-colors"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={profile.cvPath}
+          download
+          className="text-xs font-mono uppercase tracking-widest border border-ink/20 rounded-full px-4 py-2 hover:bg-ink hover:text-paper hover:border-ink hover:shadow-card transition-all"
+        >
+          CV ↓
+        </a>
+      </nav>
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="h-[2px] bg-blade origin-left"
+      />
+    </header>
   );
-};
-
-export default Navbar;
+}

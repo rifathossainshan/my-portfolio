@@ -1,36 +1,34 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { achievements } from '../data/achievements';
+import { motion } from "framer-motion";
+import { achievements } from "../data/achievements";
 
-const Achievements = () => {
+export default function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-6 max-w-4xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">Experience & <span className="text-accent-coral">Achievements</span></h2>
-      </div>
+    <section id="achievements" className="max-w-6xl mx-auto px-6 py-24">
+      <span className="font-mono text-xs uppercase tracking-[0.2em] text-blade">
+        04 — Achievements
+      </span>
+      <h2 className="font-sans font-bold text-3xl md:text-4xl mt-3 mb-12">
+        Beyond the desk
+      </h2>
 
-      <div className="relative border-l border-gray-300 dark:border-gray-700 ml-3 md:ml-6">
-        {achievements.map((item, index) => (
-          <motion.div 
-            key={item.id}
-            initial={{ opacity: 0, x: -20 }}
+      <div className="border-l-2 border-ink/15 pl-8 space-y-10">
+        {achievements.map((a, i) => (
+          <motion.div
+            key={a.id}
+            initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="mb-10 ml-8 relative"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4, delay: i * 0.08 }}
+            className="relative"
           >
-            <span className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-accent-coral bg-brand-light dark:bg-brand-dark"></span>
-            
-            <div className="glass p-6 rounded-2xl">
-              <h3 className="text-xl font-bold text-accent-blue mb-1">{item.title}</h3>
-              <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">{item.organization} | {item.year}</h4>
-              <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
-            </div>
+            <span className="absolute -left-[41px] top-1.5 w-3 h-3 bg-blade rounded-full ring-4 ring-paper shadow-[0_0_0_3px_rgba(225,91,69,0.15)]" />
+            <p className="font-mono text-xs text-ink/40 mb-1">{a.year}</p>
+            <h3 className="font-sans font-bold text-lg">{a.title}</h3>
+            <p className="font-mono text-xs uppercase tracking-wide text-mat mb-2">{a.org}</p>
+            <p className="text-ink/70 text-sm leading-relaxed max-w-xl">{a.description}</p>
           </motion.div>
         ))}
       </div>
     </section>
   );
-};
-
-export default Achievements;
+}
