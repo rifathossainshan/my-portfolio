@@ -6,10 +6,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="text-center md:text-left">
           <a href="#home" className="text-2xl font-bold font-serif text-white block mb-2">
-            Rifat<span className="text-accentPink">.</span>
+            Shan<span className="text-accentPink">.</span>
           </a>
           <p className="text-textMuted text-sm">
-            &copy; {new Date().getFullYear()} Rifat Hossain. All rights reserved.
+            &copy; {new Date().getFullYear()} MD. Rifat Hossain Shan. All rights reserved.
           </p>
         </div>
 

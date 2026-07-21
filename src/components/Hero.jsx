@@ -25,17 +25,17 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-sans font-extrabold text-5xl md:text-7xl tracking-tight mb-6 leading-tight"
         >
-          Hi, I'm <span className="text-gradient">Rifat Hossain</span><br />
-          <span className="text-4xl md:text-6xl text-textMuted">Designer & Developer.</span>
+          Hi, I'm <span className="text-gradient">MD. Rifat Hossain Shan</span><br />
+          <span className="text-3xl md:text-5xl text-textMuted mt-4 block">Full Stack Web Developer & Graphic Designer.</span>
         </motion.h1>
         
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl text-lg md:text-xl text-textMuted mb-10"
+          className="max-w-3xl text-lg md:text-xl text-textMuted mb-10"
         >
-          Blending aesthetic graphic design with robust computer science engineering to build digital experiences that are visually stunning and technically sound.
+          I am a Computer Science Engineer with a deep passion for both development and graphic design. I build full-stack web applications and craft stunning visual identities, bringing the best of both technical logic and creative aesthetics together.
         </motion.p>
         
         <motion.div

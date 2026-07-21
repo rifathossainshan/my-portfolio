@@ -27,11 +27,12 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-textMuted text-lg">
               <p>
-                Hello! I'm Rifat, a passionate Graphic Designer and a recent Computer Science & Engineering graduate.
-                My unique background allows me to approach problem-solving from both a highly creative and a deeply technical perspective.
+                Hello! I'm MD. Rifat Hossain Shan, a Full Stack Web Developer and Graphic Designer. 
+                I am a Computer Science Engineer by education, but my passion lies equally in both 
+                writing robust code and creating beautiful designs.
               </p>
               <p>
-                Whether I'm designing a brand identity from scratch or architecting a robust web application, my goal is always to deliver experiences that are both visually stunning and functionally flawless.
+                My unique background allows me to approach problem-solving from a highly creative and a deeply technical perspective. Whether I'm designing a brand identity from scratch or architecting a complex web application, my goal is always to deliver experiences that are both visually stunning and functionally flawless.
               </p>
             </div>
           </motion.div>

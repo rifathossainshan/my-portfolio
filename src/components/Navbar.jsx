@@ -28,7 +28,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="#home" className="text-2xl font-bold font-serif text-white hover:text-accentCyan transition-colors">
-          Rifat<span className="text-accentCyan">.</span>
+          Shan<span className="text-accentCyan">.</span>
         </a>
 
         {/* Desktop Nav */}
